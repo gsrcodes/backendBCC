@@ -1,4 +1,4 @@
-class Categoria extends Object {
+export default class Categoria {
     #codigo
     #descricao
 

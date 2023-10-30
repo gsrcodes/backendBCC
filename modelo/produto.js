@@ -1,18 +1,20 @@
-class Produto{
+export default class Produto{
     #codigo;
     #descricao;
     #precoCusto;
     #precoVenda;
     #dataValidade;
     #qtdeEstoque;
+    #categoria;
 
-    constructor(codigo = 0, descricao = "", precoCusto = 0, precoVenda = 0, dataValidade = "", qtdeEstoque = 0) {
+    constructor(codigo = 0, descricao = "", precoCusto = 0, precoVenda = 0, dataValidade = "", qtdeEstoque = 0, categoria = {}) {
         this.#codigo = codigo;
         this.#descricao = descricao;
         this.#precoCusto = precoCusto;
         this.#precoVenda = precoVenda;
         this.#dataValidade = dataValidade;
         this.#qtdeEstoque = qtdeEstoque;
+        this.#categoria = categoria;
     }
 
     get codigo() {
@@ -62,5 +64,25 @@ class Produto{
 
     set qtdeEstoque(novaQtdeEstoque) {
         this.#qtdeEstoque = novaQtdeEstoque;
+    }
+
+    get categoria() {
+        return this.#categoria;
+    }
+
+    set categoria(novaCategoria) {
+        this.#categoria = novaCategoria;
+    }
+
+    toJSON () {
+        return {
+            codigo:this.#codigo,
+            descricao:this.#descricao,
+            precoCusto:this.#precoCusto,
+            precoVenda:this.#precoVenda,
+            dataValidade:this.#dataValidade,
+            qtdeEstoque:this.#qtdeEstoque,
+            categoria:this.#categoria.toJSON()
+        }
     }
 } 
